@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: #111424;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .candle-container {
+        margin-top: 60px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 10;
+        margin-left: 50px;
+    }
+
+    .wax {
+        width: 60px;
+        height: 140px;
+        background: linear-gradient(to right, #ff4d4d, #ff9999, #cc0000);
+        border-radius: 4px;
+        box-shadow: inset 0 15px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 77, 77, 0.2);
+    }
+
+    .wick {
+        width: 4px;
+        height: 15px;
+        background-color: #333;
+    }
+
+    .flame {
+        width: 24px;
+        height: 40px;
+        background: radial-gradient(circle at 50% 80%, #ffffff, #fff700, #ff5100, transparent);
+        border-radius: 50% 50% 20% 20% / 70% 70% 30% 30%;
+        animation: flicker 0.1s ease-in-out infinite alternate;
+        filter: drop-shadow(0 0 15px rgba(255, 165, 0, 0.8));
+    }
+
+    .heading {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 50px;
+        font-family: cursive;
+        color: #FFD700;
+        text-shadow: 0 0 10px gold,
+            0 0 20px orange,
+            0 0 30px yellow;
+            text-align: center;
+    }
+
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(#000428, #004e92);
+    }
+
+    .balloons {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .balloon {
+        position: absolute;
+        width: 70px;
+        height: 90px;
+        border-radius: 50%;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .balloon::before {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 30px;
+        width: 10px;
+        height: 10px;
+        background: inherit;
+        transform: rotate(45deg);
+    }
+
+    .balloon::after {
+        content: "";
+        position: absolute;
+        top: 90px;
+        left: 34px;
+        width: 2px;
+        height: 100px;
+        background: white;
+    }
+
+    .red {
+        background: #ff4d6d;
+    }
+
+    .blue {
+        background: #4da6ff;
+    }
+
+    .yellow {
+        background: #ffd43b;
+    }
+
+    .green {
+        background: #38d39f;
+    }
+
+.bunting{
+    position:absolute;
+    display:flex;
+    gap:6px;
+    z-index:5;
+}
+
+.left{
+    top:40px;
+    left:30px;
+    transform:rotate(-12deg);
+}
+
+.right{
+    top:40px;
+    right:30px;
+    transform:rotate(12deg);
+}
+.left::before,
+.right::before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height: 10px;
+    border-top:3px solid white;
+    top:-12px;
+}
+
+.left::before{
+    border-radius:0 0 120px 120px;
+}
+
+.right::before{
+    border-radius:0 0 120px 120px;
+}
+.flag{
+    width:0;
+    height:0;
+    background: transparent;
+
+    border-left:30px solid transparent;
+    border-right:30px solid transparent;
+    border-top:60px solid red;
+    
+}
+
+.red{
+    border-top-color:#ff3b30;
+}
+.orange{
+    border-top-color:#ff9500;
+}
+.yellow{
+    border-top-color:#ffd60a;
+}
+.green{
+    border-top-color:#30d158;
+}
+.blue{
+    border-top-color:#0a84ff;
+}
+.purple{
+    border-top-color:#bf5af2;
+}
+
+.flag{
+    transform-origin: top center;
+    animation: wave 2s ease-in-out infinite;
+}
+
+    @keyframes wave{
+     0%{
+        transform: rotate(-8deg) scale(1);
+     }
+     25%{
+        transform: rotate(-3deg) scale(1.1);
+     }
+     50%{
+        transform: rotate(8deg) scale(1.2);
+     }
+    75%{
+        transform: rotate(3deg) scale(1.1);
+     }
+    100%{
+        transform: rotate(-8deg) scale(1);
+     }
+}
+    @keyframes float {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes flicker {
+        0% {
+            transform: scaleX(1) scaleY(1) skewX(-1deg);
+        }
+
+        100% {
+            transform: scaleX(0.9) scaleY(1.1) skewX(1deg);
+        }
+    }
+
+    .bday {
+        color: white;
+        margin-top: auto;
+        font-size: 10px;
+        text-align: center;
+    }
+</style>
+
+<body>
+<div class="bunting left">
+    <span class="flag red"></span>
+    <span class="flag orange"></span>
+    <span class="flag yellow"></span>
+    <span class="flag green"></span>
+    <span class="flag blue"></span>
+    <span class="flag purple"></span>
+</div>
+
+<div class="bunting right">
+    <span class="flag purple"></span>
+    <span class="flag blue"></span>
+    <span class="flag green"></span>
+    <span class="flag yellow"></span>
+    <span class="flag orange"></span>
+    <span class="flag red"></span>
+</div>
+
+<h1 class="heading">HAPPY BIRTHDAY </br>
+ TO YOU</h1>
+
+    <div class="candle-container">
+        <div class="flame"></div>
+        <div class="wick"></div>
+        <div class="wax"></div>
+    </div>
+
+<div class="balloons">
+    <div class="balloon green" style="left:8%; top:8%;"></div>
+    <div class="balloon blue" style="left:18%; top:25%;"></div>
+    <div class="balloon yellow" style="left:12%; top:62%;"></div>
+    <div class="balloon red" style="left:3%; top:78%;"></div>
+    <div class="balloon blue" style="left:82%; top:8%;"></div>
+    <div class="balloon green" style="left:75%; top:25%;"></div>
+    <div class="balloon yellow" style="left:78%; top:62%;"></div>
+    <div class="balloon red" style="left:90%; top:78%;"></div>
+</div>
+
+<div class="bday">
+    <p>BLOW THIS CANDLE TO  </br>
+    MAKE A WISH</p>
+</div>
+
+</body>
+
+<script>
+     let candleContainer =document.querySelector('.candle-container');
+        candleContainer.addEventListener('click',function(){
+        window.location.href='page3.html'
+    });    
+</script>
+</html>

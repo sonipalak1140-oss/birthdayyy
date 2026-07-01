@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #f8bfd6, #f7d4e1);
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .envelope {
+        position: relative;
+        width: 500px;
+        height: 330px;
+        cursor: pointer;
+    }
+
+    /* Envelope Body */
+
+    .envelope-body {
+        position: absolute;
+        bottom: 0;
+        width: 500px;
+        height: 300px;
+        background: #f8a8c7;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, .18);
+    }
+
+    .left-fold {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        width: 0;
+        height: 0;
+
+        border-top: 150px solid transparent;
+        border-bottom: 150px solid transparent;
+        border-left: 250px solid #f39ac0;
+    }
+
+    .right-fold {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        width: 0;
+        height: 0;
+
+        border-top: 150px solid transparent;
+        border-bottom: 150px solid transparent;
+        border-right: 250px solid #f39ac0;
+    }
+
+    .bottom-fold {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+
+        width: 0;
+        height: 0;
+
+        border-left: 250px solid transparent;
+        border-right: 250px solid transparent;
+        border-bottom: 160px solid #ffc4dc;
+    }
+
+    .click-text {
+        margin-top: 40px;
+        color: #ff5d95;
+        font-size: 34px;
+        font-weight: bold;
+    }
+
+    .top-flap {
+        position: absolute;
+        top: 30px;
+        left: 0;
+
+        width: 0;
+        height: 0;
+
+        border-left: 250px solid transparent;
+        border-right: 250px solid transparent;
+        border-top: 170px solid #ff7aa8;
+
+        transform-origin: top;
+        transition: 1s ease;
+        z-index: 8;
+    }
+
+    .seal {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+
+        background: white;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 30px;
+
+        left: 50%;
+        top: 118px;
+
+        transform: translateX(-50%);
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+
+        z-index: 10;
+
+        transition: .5s;
+    }
+
+    .envelope:hover {
+
+        transform: scale(1.04);
+
+        transition: .4s;
+
+    }
+
+    .top-flap.open {
+
+        transform: rotateX(180deg);
+
+    }
+
+    .seal.hide {
+
+        opacity: 0;
+
+        transform: translateX(-50%) scale(0);
+
+    }
+
+    .letter {
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        width: 400px;
+        height: 260px;
+
+        background: #fffdf7;
+
+        border-radius: 12px;
+
+        padding: 25px;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+
+        z-index: 1;
+
+        transition: 1.2s ease;
+    }
+
+    .letter p {
+
+        color: #555;
+
+        line-height: 30px;
+
+        font-size: 18px;
+
+        text-align: center;
+
+    }
+
+    .letter h2 {
+
+        text-align: center;
+
+        color: #ff4f87;
+
+        margin-bottom: 9px;
+
+        font-size: 30px;
+
+    }
+
+    .letter {
+
+        bottom: 15px;
+
+    }
+
+    .letter.show {
+
+        transform: translateX(-50%) translateY(-180px);
+
+        z-index: 20;
+
+    }
+
+    .envelope-body {
+
+        z-index: 5;
+
+    }
+
+    .left-fold {
+
+        z-index: 6;
+
+    }
+
+    .right-fold {
+
+        z-index: 6;
+
+    }
+
+    .bottom-fold {
+
+        z-index: 7;
+
+    }
+
+    .envelope::after {
+
+        content: "";
+
+        position: absolute;
+
+        width: 320px;
+
+        height: 20px;
+
+        background: rgba(0, 0, 0, .15);
+
+        left: 50%;
+
+        bottom: -18px;
+
+        transform: translateX(-50%);
+
+        border-radius: 50%;
+
+        filter: blur(10px);
+
+    }
+</style>
+
+<body>
+
+    <div class="container">
+
+        <div class="envelope" id="envelope" onclick="openLetter()">
+
+            <!-- Letter -->
+            <div class="letter" id="letter">
+
+                <h2>💖 Dear Friend 💖</h2>
+
+                <p>
+                    Thank you for always being there—whether it's for random conversations, silly jokes, endless
+                    laughter, or just listening when I need someone. 
+                    With lots of love and best wishes,
+                    Your Forever Friend ❤️
+                </p>
+
+            </div>
+
+            <!-- Envelope Body -->
+            <div class="envelope-body">
+
+                <div class="left-fold"></div>
+
+                <div class="right-fold"></div>
+
+                <div class="bottom-fold"></div>
+
+            </div>
+
+            <!-- Top Flap -->
+            <div class="top-flap" id="topFlap"></div>
+
+            <!-- Heart Seal -->
+            <div class="seal" id="seal">
+                ❤️
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    let opened = false;
+    function openLetter() {
+
+        if (opened) return;
+        opened = true;
+        const flap = document.getElementById("flap");
+        const letter = document.getElementById("letter");
+        const seal = document.getElementById("seal");
+        seal.classList.add("hide");
+
+        setTimeout(() => {
+            flap.classList.add("open");
+        }, 300);
+
+        setTimeout(() => {
+            letter.classList.add("show");
+        }, 900);
+    }
+</script>
+
+</html>
